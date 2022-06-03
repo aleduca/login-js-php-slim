@@ -9,8 +9,10 @@ class LoginController
 {
     public function store(Request $request, Response $response)
     {
-        $email = strip_tags($_POST['email']);
-        $password = strip_tags($_POST['password']);
+        $post =  json_decode(file_get_contents('php://input'), true);
+
+        $email = strip_tags($post['email']);
+        $password = strip_tags($post['password']);
     
         $connection = Connection::getConnection();
     
